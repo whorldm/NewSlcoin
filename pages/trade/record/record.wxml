@@ -1,0 +1,23 @@
+<view class='record_container'>
+  <view class="record_title">
+    <view class='trade_type'></view>
+    <text>类别</text>
+    <text>数量</text> 
+    <text>成交价格</text>
+    <text>时间</text> 
+  </view>
+  <scroll-view scroll-y style='width:100%;height:{{scrollHeight}}rpx;'>
+    <block wx:for="{{recordList}}" wx:for-item="item" wx:key="index">
+      <view class="record_item">
+        <view class='trade_type'>
+          <image class='trade_logo' src='{{item.tradeType === 0?"../../../image/tradegame/buy_logo.png":"../../../image/tradegame/sale_logo.png"}}'></image>
+        </view>
+        <text>{{item.coinType}}</text>
+        <text>{{item.amount}}</text> 
+        <text>{{item.coinMoney}}</text>
+        <text>{{item.changeTime}}</text> 
+      </view>
+    </block>
+  </scroll-view>
+</view>
+  

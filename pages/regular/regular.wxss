@@ -1,0 +1,66 @@
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #0E1834;
+}
+.regular_container {
+  width: 100%;
+  height: 100%;
+}
+
+.regular_title {
+  width: 566rpx;
+  height: 96rpx;
+  display: block;
+  position: relative;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+}
+
+/*规则详情*/
+.regular_content {
+  width: 640rpx;
+  position: relative;
+  margin: 0 auto 50rpx;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 40rpx;
+}
+.regular_content view{
+  margin: 10rpx auto;
+}
+.regular_content text{
+  display: block;
+  color: #fbb10e;
+}
+
+/*新手教程*/
+.new_person {
+  width: 562rpx;
+  height: 380rpx;
+  display: block;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 20rpx auto;
+}
+/*规则详情的title*/
+.regular_one {
+  display: block;
+  width: 636rpx;
+  height: 40rpx;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 0rpx auto 30rpx;
+}
+.regular_two {
+  display: block;
+  width: 638rpx;
+  height: 40rpx;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 10rpx auto 20rpx;
+}

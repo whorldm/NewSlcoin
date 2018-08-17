@@ -1,0 +1,127 @@
+page {
+  height: 100%;
+  width: 100%;
+  background-color: #0A0F2C;
+}
+.share_container {
+  height: 100%;
+  width: 100%;
+  background-color: #0A0F2C;
+}
+
+/** 邀请LOGO的样式 **/
+.share_title {
+  height: 470rpx;
+  width: 600rpx;
+  background-size: cover;
+  background-image: url('http://pczh4pjuz.bkt.clouddn.com/new_bg_share_title.png');
+  position: relative;
+  top: 30rpx;
+  margin: 0 auto;
+}
+.share_logo {
+  width: 142rpx;
+  height: 142rpx;
+  border-radius: 50%;
+  position: absolute;
+  top: 18rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.share_title .share_btn {
+  width: 404rpx;
+  height: 74rpx;
+  background-size: cover;
+  background-image: url('http://pczh4pjuz.bkt.clouddn.com/new_btn_share.png');
+  position: absolute;
+  bottom: -30rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+.share_btn button{
+  width: 404rpx;
+  height: 74rpx;
+  opacity: 0;
+  z-index: 2;
+  position: absolute;
+  bottom: -30rpx;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+/** 邀请列表的样式 **/
+.invite_line {
+  width: 622rpx;
+  height: 24rpx;
+  position: relative;
+  top: 100rpx;
+  left: 64rpx;
+  background-size: cover;
+  background-image: url('http://pcb8f4day.bkt.clouddn.com/invite_line.png')
+}
+
+.share_list {
+  position: relative;
+  top: 100rpx;
+  margin: 0 auto;
+  height: 48%;
+}
+.list_item {
+  height: 80rpx;
+  width: 602rpx;
+  color: #fff;
+  font-size: 24rpx;
+  margin: 20rpx auto 0rpx;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #063F63;
+}
+.list_item .list_index {
+  line-height: 80rpx;
+  font-size: 36rpx;
+  padding-left: 8rpx;
+  flex: 0.5;
+}
+.list_item image {
+  height: 80rpx;
+  width:80rpx;
+  border-radius: 50%;
+  margin-right: 19rpx;
+}
+.list_item .list_name {
+  flex: 1.5;
+  line-height: 80rpx;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis; 
+}
+.list_item .list_profit {
+  flex: 1.2;
+  line-height: 80rpx;
+  text-align: center;
+}
+.list_item .list_yield {
+  flex: 1.2;
+  line-height: 80rpx;
+  text-align: center;
+}
+
+/** 没有邀请好友样式 **/
+ .no_friends {
+  position: relative;
+  top: 100rpx;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 24rpx;
+  color: #fff;
+ }
+ .no_friends image {
+   width: 446rpx;
+   height: 490rpx;
+ }

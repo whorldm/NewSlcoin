@@ -1,0 +1,119 @@
+page{
+  width:100%;
+  height:100%;
+  background-color: #0E1834;
+}
+
+.reward_title_img {
+  width: 638rpx;
+  height: 162rpx;
+  display: block;
+  position: relative;
+  top: 14rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.reward_content {
+  width: 700rpx;
+  position: relative;
+  top: 40rpx;
+  margin: 0 auto;
+}
+
+.reward_title {
+  width: 638rpx;
+  color: #FFF;
+  font-size: 24rpx;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 0 auto 24rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.reward_title text{
+  text-align: center;
+  display: inline-block;
+}
+
+.reward_item{
+  width: 654rpx;
+  height: 114rpx;
+  color: #fff;
+  font-size: 24rpx;
+  background-size: cover;
+  background-image: url('http://pcb8f4day.bkt.clouddn.com/reward_list.png');
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin: 16rpx auto;
+  align-items: center;
+}
+.reward_item text {
+  text-align: center;
+  display: inline-block;
+  line-height: 30rpx;
+}
+
+.listen_area{
+  width: 700rpx;
+  position: fixed;
+  bottom: 150rpx;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  margin: 0 auto;
+  text-align: center;
+}
+.listen_area .listen{
+  width: 54rpx;
+  height: 54rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+.listen_area .btn_listen {
+  width: 74rpx;
+  height: 74rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  z-index: 2;
+  opacity: 0;
+}
+.listen_area .listen_line {
+  width: 640rpx;
+  height: 24rpx;
+  position: absolute;
+  top: 60rpx;
+  right: 0;
+  left: 0;
+  margin: 20rpx auto;
+}
+
+.no_reward {
+  width: 446rpx;
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 30rpx;
+  text-align: center;
+  position: relative;
+  top: 80rpx;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.no_reward image {
+   width: 446rpx;
+   height: 490rpx;
+}

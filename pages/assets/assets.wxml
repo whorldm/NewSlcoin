@@ -1,0 +1,56 @@
+<view class='assets_container'>
+  <view class='assets_area'>
+    <view class='logo_box'>
+      <image class='userLogo' src='{{userLogo}}'></image>
+    </view>
+    <text class='userName'>{{userName}}</text>
+    <text class='myRank'>{{myRank}}</text>
+    <view bindtap='ToMyReward' class='myReward'></view>
+    <view bindtap='ToGameRegular' class='gameRegular'></view>
+    <view class='total_assets'>
+      <view class='assets_item'>
+        <view>总资产</view>
+        {{total.assets}}
+      </view>
+      <view class='assets_item'>
+        <view>累计盈亏</view>
+        {{total.profit}}
+      </view>
+      <view class='assets_item'>
+        <view>收益率</view>
+        {{total.yield}}
+      </view>
+    </view>
+  </view>
+  <image class='btn_show' bindtap='actionSheetTap' src='../../image/assets/btn_show.png'></image>
+  <view class='profit_title'></view>
+  <view class='coin_area' style='height:{{coinAreaHeight}}rpx;'>
+    <view class="coin_list_title">
+      <text class='coin_name'>类别</text> 
+      <text class='coin_amount'>数量</text>
+      <text class='coin_price'>盈亏</text>
+      <text class='coin_ratio'>持仓占比</text>  
+    </view>
+    <scroll-view scroll-y style='height:{{scrollHeight}}rpx;'>
+      <block wx:for="{{coinList}}" wx:for-item="item" wx:key="index">
+        <view class="coin_item">
+          <text style="font-size:30rpx;font-weight:bolder;" class='coin_name'>{{item.coin_type}}</text> 
+          <text class='coin_amount'>{{item.amount}}</text>
+          <text class='coin_price'>{{item.coin_income}}</text>
+          <text class='coin_ratio'>{{item.position}}</text>  
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+    <action-sheet-item>
+      <button open-type='share' id='result'>分享给朋友</button>
+    </action-sheet-item>
+    <action-sheet-item bindtap="SaveToPicture">生成分享图</action-sheet-item>
+    <action-sheet-cancel >取消</action-sheet-cancel>
+  </action-sheet>
+  <view class='float_btn' catchtouchmove='menuMainMove' style='top:{{pos.top}}px;left:{{pos.left}}px;'>
+    <button open-type='contact'></button>
+    <image src='../../image/assets/contact.png'></image>
+  </view>
+</view>

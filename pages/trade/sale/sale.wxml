@@ -1,0 +1,43 @@
+<view style="width:100%;height:100%;">
+  <!-- 输入框 -->
+  <view class='enter_num'>
+    <input placeholder="卖出数量" type='digit' bindinput="ChangNumer" value='{{sale_coin_amount}}'/>
+    <image src='../../../image/tradegame/input.png'></image>
+  </view>
+  <!-- 交易额 -->
+  <view class='trade_money_area'>
+    <view wx:if="{{isEnough}}" class='can_use_money'>
+      <view>当前可用</view>
+      {{AvailableCoin}} 个
+    </view>
+    <view wx:else style='color:#ff6600;' class='can_use_money'>当前可用不足</view>
+    <view class='trade_money'>
+      <text>交易额</text>
+      <view>{{TradeMoney}}</view>
+    </view>
+  </view>
+
+  <!-- 半仓或全仓 -->
+  <view class='btn_oprate'>
+    <view class='label_store'>
+      <image bindtap='ChooseStore' style='float:left;' id="all" src='{{StoreImgList[allStore]}}'/>
+      <image bindtap='ChooseStore' style='float:right;' id="half" src='{{StoreImgList[halfStore]}}'/>
+    </view>
+    <image class='btn_oprate_img' wx:if="{{isEnough}}" bindtap='ModifySale' src='../../../image/tradegame/btn_sale.png'></image>
+    <image class='btn_oprate_img' wx:else src='../../../image/tradegame/btn_unsale.png'></image>
+  </view>
+
+  <!-- 邀请按钮 -->
+  <view class='trade_invite' bindtap='ToDetailShare'>
+    邀请即送20000本金 >>
+  </view>
+
+  <!--提示卖出成功-->
+  <view class='dialog-container' hidden="{{!isShowDialog}}">
+    <view class='dialog-mask'></view>
+    <view class='dialog-content'>
+      <image src='../../../image/tradegame/success_coin.png'></image>
+      <view>卖出成功！</view>
+    </view>
+  </view>
+</view>

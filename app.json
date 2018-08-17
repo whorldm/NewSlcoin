@@ -1,0 +1,42 @@
+{
+  "pages":[
+    "pages/trade/trade",
+    "pages/rank/rank",
+    "pages/assets/assets",
+    "pages/share/share",
+    "pages/regular/regular",
+    "pages/reward/reward",
+    "pages/priview/priview"
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#0A0F2C",
+    "navigationBarTitleText": "炒币大咖",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "borderStyle": "black",
+    "selectedColor": "#FFB10A",
+    "color": "#fff",
+    "backgroundColor": "#070B21",
+    "list": [
+      {
+        "text": "交易",
+        "pagePath": "pages/trade/trade",
+        "iconPath": "image/toolbar/tab_trade.png",
+        "selectedIconPath": "image/toolbar/tab_trade_active.png"
+      },
+      {
+        "text": "排名",
+        "pagePath": "pages/rank/rank",
+        "iconPath": "image/toolbar/tab_rank.png",
+        "selectedIconPath": "image/toolbar/tab_rank_active.png"
+      },
+      {
+        "text": "资产",
+        "pagePath": "pages/assets/assets",
+        "iconPath": "image/toolbar/tab_assets.png",
+        "selectedIconPath": "image/toolbar/tab_assets_active.png"
+      }
+    ]
+  }
+}

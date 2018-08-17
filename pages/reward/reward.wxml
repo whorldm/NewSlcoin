@@ -1,0 +1,31 @@
+<view class='reward_container'>
+  <image class="reward_title_img" src="../../image/reward/reward_title.png"></image>
+  <view class='reward_content' wx:if="{{RewardList.length > 0}}">
+    <view class="reward_title">
+      <text style='flex: 0.8;'>获得名次</text>
+      <text style='flex: 1;'>参赛时间</text> 
+      <text style='flex: 2;'>累计盈亏 / 收益率</text>
+      <text style='flex: 1;'></text> 
+    </view>
+    <scroll-view scroll-y style='height:{{scrollHeight}}rpx;'>
+      <block wx:for="{{RewardList}}" wx:for-item="item" wx:key="index">
+        <view class="reward_item">
+          <text style='flex: 0.8;font-size:36rpx;'>{{item.userRank}}</text>
+          <text style='flex: 1;'>{{item.endTime}}</text> 
+          <text style='flex: 2;'>{{item.earnMoney}} / {{item.earnRate}}</text>
+          <text style='flex: 1;' wx:if="{{item.userRank <= 10}}">{{item.award}}</text>
+          <text style='flex: 1;' wx:else>再接再厉</text> 
+        </view>
+      </block>
+    </scroll-view>
+    <view class='listen_area'>
+      <button class='btn_listen' open-type='contact'></button>
+      <image class='listen' src='../../image/reward/listen.png'></image>
+      <image class='listen_line' src='../../image/reward/listen_line.png'></image>
+    </view>
+  </view>
+  <view wx:else class='no_reward'>
+    <image src='../../image/share/no_friend.png'></image>
+    您还未获得奖励，请再接再厉
+  </view>
+</view>

@@ -1,0 +1,56 @@
+<view class='rank_container'>
+  <view wx:if="{{isStartGame}}">
+    <view class='rank_head'>
+      <view class='rank_one'>
+        <image src="{{HeadRank[0].wei_pic}}"></image>
+        <text>{{HeadRank[0].nickname}}</text>
+        <text style='color:#FFB10A;'>{{HeadRank[0].income ||  HeadRank[0].earnMoney}}</text>
+        <view>{{HeadRank[0].yield || HeadRank[0].earnRate}}</view>
+      </view>
+
+      <view class='rank_two'>
+        <image src="{{HeadRank[1].wei_pic}}"></image>
+        <text>{{HeadRank[1].nickname}}</text>
+        <text style='color:#FFB10A;'>{{HeadRank[1].income || HeadRank[1].earnMoney}}</text>
+        <view>{{HeadRank[1].yield || HeadRank[1].earnRate}}</view>
+      </view>
+      
+      <view class='rank_three'>
+        <image src="{{HeadRank[2].wei_pic}}"></image>
+        <text>{{HeadRank[2].nickname}}</text>
+        <text style='color:#FFB10A;'>{{HeadRank[2].income ||  HeadRank[2].earnMoney}}</text>
+        <view>{{HeadRank[2].yield || HeadRank[2].earnRate}}</view>
+      </view>
+    </view>
+
+    <view class='rank_title'>
+      <view style='flex: 0.3'></view>
+      <text class='my_rank'>我的排名：{{My.rank}}</text>
+      <text class='my_rank_title'>累计盈亏</text>
+    </view>
+
+    <scroll-view scroll-y class='rank_list' style='height:{{scrollHeight}}rpx;'>
+      <block wx:for="{{RankList}}" wx:for-item="item" wx:key="indexr">
+        <view class="rank_item {{item.rank == My.rank?'It_My':''}}">
+          <text class="rank_index">{{item.rank || item.userRank}}</text>
+          <image src='{{item.wei_pic}}'></image>
+          <text class='rank_name'>{{item.nickname}}</text> 
+          <view class='rank_profit'>
+            {{item.income ||  item.earnMoney}}
+            <text class='rank_yield'>{{item.yield || item.earnRate}}</text>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+  
+  <!-- 未参加比赛 -->
+  <view wx:else class='none_container'>
+    <view class='no_rank'>
+      <image src='../../image/share/no_friend.png'></image>
+      <text wx:if="{{!isEnterGame}}">您还未参加比赛</text>
+      <text wx:else>比赛尚未开始</text>
+    </view>
+    <image wx:if="{{!isEnterGame}}" bindtap='ToEnterGame' class='to_Join' src='../../image/waitgame/btn_start_game.png'></image>
+  </view>
+</view>

@@ -1,0 +1,24 @@
+<view class='share_container'>
+  <view class='share_title'>
+    <image class='share_logo' src='{{userLogo}}'></image>
+    <view class='share_btn'>
+      <button open-type='share'></button>
+    </view>
+  </view>
+  <view class='invite_line' hidden='{{!isInvited}}'></view>
+  <scroll-view scroll-y wx:if="{{isInvited}}" class='share_list'>
+    <block wx:for="{{inviteList}}" wx:for-item="item" wx:key="no">
+      <view class="list_item">
+        <text class="list_index">{{item.no}}</text>
+        <image src='{{item.wei_pic}}'></image>
+        <text class='list_name'>{{item.nickname}}</text> 
+        <text class='list_profit'>邀请奖励</text>
+        <text class='list_yield'>+20000</text> 
+      </view>
+    </block>
+  </scroll-view>
+  <view wx:else class='no_friends'>
+    <image src='../../image/share/no_friend.png'></image>
+    <view>你的好友还在路上</view>
+  </view>
+</view>

@@ -1,0 +1,171 @@
+<view id='ShowArea'>
+  <!-- 参赛前 -->
+  <view class="start_container" wx:if="{{step === 1}}">
+    <image class='game_name' src='../../image/entergame/bg_start_game.png'></image>
+    <image class='new_person' src='../../image/entergame/new_person.png'></image>
+    <!--操作按钮-->
+    <view class='enter_game'>
+      <image class='narrow_img' src='../../image/entergame/narrow.gif'></image>
+      <image class="btn_img" src="../../image/waitgame/btn_start_game.png" />
+      <form bindsubmit="getFormId" report-submit="true">
+        <button formType="submit" class='form_box'>
+          <view class='btn_form'>
+            <form bindsubmit="getFormId" report-submit="true">
+              <button formType="submit" class='form_box'>
+                <view class='btn_form'>
+                  <button open-type="getUserInfo" bindgetuserinfo='getUserInfo' class='btn_form'></button>
+                </view>
+              </button>
+            </form>
+          </view>
+        </button>
+      </form>
+    </view>
+    <!--比赛规则-->
+    <image class='regular_img' src='../../image/entergame/regular_title.png'></image>
+    <view class='regular_content'>
+      <view>
+        1. 本金：每个参赛用户将获得模拟资金20000，参赛过程中每邀请一个用户，可获得额外20000本金。
+      </view>
+      <view>
+        2. 制度：每场比赛人数为{{newPerson.total_num}}人，时间为{{newPerson.game_time}}小时，买入卖出立即成交，且没有交易限制，没有交易费用。
+      </view>
+      <view>
+        3. 单位：交易价格/累计盈亏等保留小数点后2位，收益率及交易数量保留小数点后2位。
+      </view>
+      <view>
+        4. 排行：排行以用户累计盈亏为依据，实时更新。
+      </view>
+      <view>
+        5. 结束：比赛结束后，当次比赛模拟资产清空，保留名次记录及奖励。
+      </view>
+      <view>
+        6. 奖励：每次比赛{{newPerson.reward_rank}}发放奖励神秘糖果，获奖用户可联系客服领取。
+      </view>
+      <view>
+        7. 本程序当前为测试阶段，后续细则将于更新后发布。
+      </view>
+    </view>
+  </view>
+
+  <!-- 已参赛 -->
+  <view class='invite_container' wx:if="{{step === 2}}">
+    <image class='game_name' src='../../image/entergame/bg_start_game.png'></image>
+    <view class='room_info'>
+      <!-- 人数不足，邀请好友 -->
+      <view style='width:100%;height:100%;' wx:if="{{!isStartGame}}">
+        <image class='coin_img' src='../../image/waitgame/add_coin.png'></image>
+        <image class='light_line' src='../../image/waitgame/light_line.gif'></image>
+        <view class='text_area'>
+          <view>{{newPerson.total_num}}人满，立即开赛</view>
+          <text>还差{{newPerson.total_num - unFullNum}}人...</text>
+        </view>
+      </view>
+      <!-- 人已满，开赛倒计时 -->
+      <view style='width:100%;height:100%;' wx:if="{{isStartGame}}">
+        <image class='gametitle' src='../../image/waitgame/game_title.png'></image>
+        <image class='gamecount' src='{{countURL}}'></image>
+      </view>
+    </view>
+    <view class='enter_game'>
+      <image class='narrow_img' src='../../image/entergame/narrow.gif'></image>
+      <image class="btn_img" src="../../image/waitgame/btn_invite.png" />
+      <button class="btn_game_bottom" open-type='share'></button>
+    </view>
+  </view>
+
+  <!-- 已开赛，开始交易 -->
+  <view class='trade_container' wx:if="{{step === 3}}">
+    <!--倒计时-->
+    <view class='count_area'>
+      <text class='count_time'>倒计时：{{clock}}</text>
+      <image class='count_slider' src='{{clockURL}}'></image>
+    </view>
+    <!--公告栏-->
+    <view class="notice_container">
+      <image class='img_notice' src='../../image/tradegame/notice.png'></image>
+      <swiper class="notice" vertical="true" autoplay="true" circular="true" interval="2000">
+        <block wx:for="{{msgList}}" wx:key="{{index}}">
+          <swiper-item>
+            <view class="notice_item">{{item}}</view>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+    <!--选择币种-->
+    <view class='picker_container' hidden="{{currentTab === 1}}">
+      <picker bindchange="bindPickerChange" value="{{coinIndex}}" range="{{coinList}}" range-key="one_coin">
+        <view class='picker_coin'>
+          {{coinList[coinIndex].coin_type || '--'}}<span></span>
+        </view>
+      </picker>
+      <view class='price_area'>
+        <text class='picker_price'>市价：{{coinList[coinIndex].coin_money || '--'}}</text>
+        <text class='picker_price'>成本：{{coinCost}}</text>
+      </view>
+    </view>
+    <view class='picker_container' hidden="{{currentTab === 0 || currentTab === 2}}">
+      <picker bindchange="ownCoinPickerChange" value="{{ownCoinIndex}}" range="{{ownCoinList}}" range-key='one_coin'>
+        <view class='picker_coin'>
+          {{ownCoinList[ownCoinIndex].coin_type || '--'}}<span></span>
+        </view>
+      </picker>
+      <view class='price_area'>
+        <text class='picker_price'>市价：{{ownCoinList[ownCoinIndex].coin_money || '--'}}</text>
+        <text class='picker_price'>成本：{{ownCoinCost}}</text>
+      </view>
+    </view>
+    <!--交易部分-->
+    <view class='tab_trade_container'>
+      <!--买入/卖出/交易记录Tab部分-->
+      <view class='tab_wrapper'>
+        <view id='tabbuy' class='tab_item {{currentTab === 0 ? "tab_active":""}}' bindtap='switchTab'>
+          <image class='tab_logo' src='{{currentTab === 0 ? "../../image/tradegame/buy_active.png":"../../image/tradegame/buy.png"}}'></image>
+        </view>
+        <view id='tabsale' class='tab_item {{currentTab === 1 ? "tab_active":""}}' bindtap='switchTab'>
+          <image  class='tab_logo' src='{{currentTab === 1 ? "../../image/tradegame/sale_active.png":"../../image/tradegame/sale.png"}}'></image>
+        </view>
+        <view id='tabrecord' class='tab_item {{currentTab === 2 ? "tab_active":""}}' bindtap='switchTab'>
+          <image  class='tab_logo' src='{{currentTab === 2 ? "../../image/tradegame/record_active.png":"../../image/tradegame/record.png"}}'></image>
+        </view>
+      </view>
+      <!--买入/卖出/交易记录Content部分-->
+      <view class='{{currentTab === 0 ? "content_one":""}}' style='height:{{tabHeight}}rpx;' hidden='{{currentTab !== 0}}'>
+        <Buy id="buy" coinItem="{{coinList[coinIndex]}}" AvailableMoney="{{our.assets}}" bind:BuySuccess = "ChangeMyAssets"/>
+      </view>
+      <view class='{{currentTab === 1 ? "content_two":""}}' style='height:{{tabHeight}}rpx;' hidden='{{currentTab !== 1}}'>
+        <Sale id="sale" coinItem="{{ownCoinList[ownCoinIndex]}}" AvailableMoney="{{our.possess}}" bind:SaleSuccess = "ChangeMyAssets"/>
+      </view>
+      <view class='{{currentTab === 2 ? "content_three":""}}' style='height:{{tabHeight}}rpx;' hidden='{{currentTab !== 2}}'>
+        <Record id="record" recordList="{{recordList}}" scrollHeight="{{tabHeight - 80}}"/>
+      </view>
+    </view>
+  </view>
+
+  <!-- 比赛结束 -->
+  <view class='over_container' wx:if="{{step === 4}}">
+    <view class='show_game_result'>
+      <image class='bg_result' src="{{gameResult.bg_url}}"></image>
+      <image class='userLogo' src='{{userInfo.avatarUrl}}'></image>
+      <view class='userName'>{{userInfo.nickName}}</view>
+      <view class='result_area'>
+        本次炒币大赛中
+        <view>我排名第<text>{{our.rank}}</text></view>
+        <view>共获得收益<text>{{our.income}}</text></view>
+        保持一年，我将：
+        <view class='shrink'>{{gameResult.title}}</view>
+      </view>
+    </view>
+    <view class='over_btns'>
+      <view class='over_share' bindtap="actionSheetTap"></view>
+      <view class='over_agin' bindtap='AgainGame'>回到首页 ></view>
+    </view>
+    <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+      <action-sheet-item>
+        <button open-type='share' id='result'>分享给朋友</button>
+      </action-sheet-item>
+      <action-sheet-item bindtap="SaveToPicture">生成分享图</action-sheet-item>
+      <action-sheet-cancel >取消</action-sheet-cancel>
+    </action-sheet>
+  </view>
+</view>

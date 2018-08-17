@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "Buy": "buy/buy",
+    "Sale": "sale/sale",
+    "Record": "record/record"
+  },
+  "enablePullDownRefresh": false,
+  "backgroundColor": "#0A0F2C",
+  "backgroundTextStyle": "light"
+}

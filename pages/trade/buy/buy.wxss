@@ -1,0 +1,130 @@
+/** 输入或者选择模块的样式 **/
+/*输入框的样式*/
+.enter_num input{
+  height: 80rpx;
+  width: 540rpx;
+  font-size: 36rpx;
+  position: absolute;
+  top: 8%;
+  left: 0;
+  right: 0;
+  padding: 0 40rpx;
+  margin: 0 auto;
+  z-index: 2;
+}
+.enter_num image {
+  height: 80rpx;
+  width: 592rpx;
+  position: absolute;
+  top: 8%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+/*当前可用余额和交易额的样式*/
+.trade_money_area {
+  width: 590rpx;
+  position: absolute;
+  top: 24%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.can_use_money {
+  color: #fff;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  width: 150rpx;
+  float: left;
+  text-align: left
+}
+.trade_money {
+  width: 16%;
+  float: right;
+  color: #fff;
+  text-align: left;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  margin-right: 20rpx;
+}
+.trade_money text{
+  display: block;
+}
+
+/** 交易额和操作按钮样式 **/
+.btn_oprate {
+  width: 80%;
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+}
+.label_store {
+  width: 460rpx;
+  position: relative;
+  left: 0;
+  right: 0;
+  margin: 20rpx auto;
+}
+.label_store image {
+  display: block;
+  width: 212rpx;
+  height: 70rpx;
+}
+.btn_oprate_img {
+  width: 470rpx;
+  height: 104rpx;
+  margin: 60rpx auto 0;
+}
+
+/** 邀请好友样式 **/
+.trade_invite {
+  width: 85%;
+  color: #FBB10A;
+  font-size: 30rpx;
+  line-height: 36rpx;
+  text-align: center;
+  padding-left: 20rpx;
+  position: absolute;
+  top: 87%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+/**弹出层提醒**/
+.dialog-mask{
+  position: fixed;
+  z-index: 1000;
+  height: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(10, 10, 10, 0.5);
+}
+.dialog-content {
+  width: 454rpx;
+  height: 198rpx; 
+  color: #FFFFFF;
+  font-size: 30rpx;
+  text-align: center;
+  position: absolute;
+  top: 10%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 2000;
+  background-size: cover;
+  background-image: url('http://pczh4pjuz.bkt.clouddn.com/bg_dialog.png');
+}
+.dialog-content image {
+  width: 150rpx;
+  height: 96rpx;
+  position: relative;
+  top: 10rpx;
+  margin: 10rpx auto;
+  z-index: 2000;
+}

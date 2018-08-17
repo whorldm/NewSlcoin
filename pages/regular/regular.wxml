@@ -1,0 +1,29 @@
+<view class='regular_container'>
+  <image class='regular_title' src='../../image/regular/bg_regular.png'></image>
+  <image class='regular_one' src='../../image/regular/title1.png'></image>
+  <image class='new_person' src='../../image/entergame/new_person.png'></image>
+  <image class='regular_two' src='../../image/regular/title2.png'></image>
+  <view class='regular_content'>
+    <view>
+      1. 本金：每个参赛用户将获得模拟资金20000，参赛过程中每邀请一个用户，可获得额外20000本金。
+    </view>
+    <view>
+      2. 制度：每场比赛人数为{{Regular.total_num}}人，时间为{{Regular.game_time}}小时，买入卖出立即成交，且没有交易限制，没有交易费用。
+    </view>
+    <view>
+      3. 单位：交易价格/累计盈亏等保留小数点后2位，收益率及交易数量保留小数点后2位。
+    </view>
+    <view>
+      4. 排行：排行以用户累计盈亏为依据，实时更新。
+    </view>
+    <view>
+      5. 结束：比赛结束后，当次比赛模拟资产清空，保留名次记录及奖励。
+    </view>
+    <view>
+      6. 奖励：每次比赛{{Regular.reward_rank}}发放奖励神秘糖果，获奖用户可联系客服领取。
+    </view>
+    <view>
+      7. 本程序当前为测试阶段，后续细则将于更新后发布。
+    </view>
+  </view>
+</view>
